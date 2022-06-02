@@ -2,16 +2,12 @@
 #               Pacman                #
 #######################################
 
-# abs and aur command check
-local abs_aur=''
-(( ! $+commands[abs] )) || abs_aur+=' && sudo abs'
-(( ! $+commands[aur] )) || abs_aur+=' && sudo aur'
-
-
 # Pacman - https://wiki.archlinux.org/index.php/Pacman_Tips
 alias pacupg='sudo pacman -Syu'
 alias pacin='sudo pacman -S'
+alias paclean='sudo pacman -Sc'
 alias pacins='sudo pacman -U'
+alias paclr='sudo pacman -Scc'
 alias pacre='sudo pacman -R'
 alias pacrem='sudo pacman -Rns'
 alias pacrep='pacman -Si'
@@ -26,7 +22,7 @@ alias pacfileupg='sudo pacman -Fy'
 alias pacfiles='pacman -F'
 alias pacls='pacman -Ql'
 alias pacown='pacman -Qo'
-alias pacupd="sudo pacman -Sy$abs_aur"
+alias pacupd="sudo pacman -Sy"
 alias upgrade='sudo pacman -Syu'
 
 function paclist() {
@@ -94,6 +90,8 @@ fi
 if (( $+commands[aura] )); then
   alias auin='sudo aura -S'
   alias aurin='sudo aura -A'
+  alias auclean='sudo aura -Sc'
+  alias auclr='sudo aura -Scc'
   alias auins='sudo aura -U'
   alias auinsd='sudo aura -S --asdeps'
   alias aurinsd='sudo aura -A --asdeps'
@@ -108,9 +106,9 @@ if (( $+commands[aura] )); then
   alias aurrep='aura -Ai'
   alias aureps='aura -As --both'
   alias auras='aura -As --both'
-  alias auupd="sudo aura -Sy$abs_aur"
+  alias auupd="sudo aura -Sy"
   alias auupg='sudo sh -c "aura -Syu              && aura -Au"'
-  alias ausu='sudo  sh -c "aura -Syu --no-confirm && aura -Au --no-confirm"'
+  alias ausu='sudo sh -c "aura -Syu --no-confirm && aura -Au --no-confirm"'
   alias upgrade='sudo aura -Syu'
 
   # extra bonus specially for aura
@@ -121,6 +119,8 @@ if (( $+commands[aura] )); then
 fi
 
 if (( $+commands[pacaur] )); then
+  alias pacclean='pacaur -Sc'
+  alias pacclr='pacaur -Scc'
   alias paupg='pacaur -Syu'
   alias pasu='pacaur -Syu --noconfirm'
   alias pain='pacaur -S'
@@ -135,7 +135,7 @@ if (( $+commands[pacaur] )); then
   alias paorph='pacaur -Qtd'
   alias painsd='pacaur -S --asdeps'
   alias pamir='pacaur -Syy'
-  alias paupd="pacaur -Sy$abs_aur"
+  alias paupd="pacaur -Sy"
   alias upgrade='pacaur -Syu'
 fi
 
@@ -144,6 +144,8 @@ if (( $+commands[trizen] )); then
   alias trupg='trizen -Syua'
   alias trsu='trizen -Syua --noconfirm'
   alias trin='trizen -S'
+  alias trclean='trizen -Sc'
+  alias trclr='trizen -Scc'
   alias trins='trizen -U'
   alias trre='trizen -R'
   alias trrem='trizen -Rns'
@@ -155,32 +157,14 @@ if (( $+commands[trizen] )); then
   alias trorph='trizen -Qtd'
   alias trinsd='trizen -S --asdeps'
   alias trmir='trizen -Syy'
-  alias trupd="trizen -Sy$abs_aur"
+  alias trupd="trizen -Sy"
   alias upgrade='trizen -Syu'
-fi
-
-if (( $+commands[yaourt] )); then
-  alias yaconf='yaourt -C'
-  alias yaupg='yaourt -Syua'
-  alias yasu='yaourt -Syua --noconfirm'
-  alias yain='yaourt -S'
-  alias yains='yaourt -U'
-  alias yare='yaourt -R'
-  alias yarem='yaourt -Rns'
-  alias yarep='yaourt -Si'
-  alias yareps='yaourt -Ss'
-  alias yaloc='yaourt -Qi'
-  alias yalocs='yaourt -Qs'
-  alias yalst='yaourt -Qe'
-  alias yaorph='yaourt -Qtd'
-  alias yainsd='yaourt -S --asdeps'
-  alias yamir='yaourt -Syy'
-  alias yaupd="yaourt -Sy$abs_aur"
-  alias upgrade='yaourt -Syu'
 fi
 
 if (( $+commands[yay] )); then
   alias yaconf='yay -Pg'
+  alias yaclean='yay -Sc'
+  alias yaclr='yay -Scc'
   alias yaupg='yay -Syu'
   alias yasu='yay -Syu --noconfirm'
   alias yain='yay -S'
@@ -195,8 +179,6 @@ if (( $+commands[yay] )); then
   alias yaorph='yay -Qtd'
   alias yainsd='yay -S --asdeps'
   alias yamir='yay -Syy'
-  alias yaupd="yay -Sy$abs_aur"
+  alias yaupd="yay -Sy"
   alias upgrade='yay -Syu'
 fi
-
-unset abs_aur

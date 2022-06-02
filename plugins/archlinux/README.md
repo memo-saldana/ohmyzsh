@@ -17,8 +17,10 @@ plugins=(... archlinux)
 | pacin        | `sudo pacman -S`                       | Install packages from the repositories                           |
 | pacins       | `sudo pacman -U`                       | Install a package from a local file                              |
 | pacinsd      | `sudo pacman -S --asdeps`              | Install packages as dependencies of another package              |
+| paclean      | `sudo pacman -Sc`                      | Clean out old and unused caches and packages                     |
 | pacloc       | `pacman -Qi`                           | Display information about a package in the local database        |
 | paclocs      | `pacman -Qs`                           | Search for packages in the local database                        |
+| paclr        | `sudo pacman -Scc`                     | Remove all files from the cache                                  |
 | paclsorphans | `sudo pacman -Qdt`                     | List all orphaned packages                                       |
 | pacmir       | `sudo pacman -Syy`                     | Force refresh of all package lists after updating mirrorlist     |
 | pacre        | `sudo pacman -R`                       | Remove packages, keeping its settings and dependencies           |
@@ -26,13 +28,13 @@ plugins=(... archlinux)
 | pacrep       | `pacman -Si`                           | Display information about a package in the repositories          |
 | pacreps      | `pacman -Ss`                           | Search for packages in the repositories                          |
 | pacrmorphans | `sudo pacman -Rs $(pacman -Qtdq)`      | Delete all orphaned packages                                     |
-| pacupd       | `sudo pacman -Sy && <abs/aur refresh>`[¹](#f1) | Update and refresh local package, ABS and AUR databases  |
+| pacupd       | `sudo pacman -Sy`                      | Update and refresh local package, ABS and AUR databases          |
 | pacupg       | `sudo pacman -Syu`                     | Sync with repositories before upgrading packages                 |
 | pacfileupg   | `sudo pacman -Fy`                      | Download fresh package databases from the server                 |
 | pacfiles     | `pacman -F`                            | Search package file names for matching strings                   |
 | pacls        | `pacman -Ql`                           | List files in a package                                          |
 | pacown       | `pacman -Qo`                           | Show which package owns a file                                   |
-| upgrade[³](#f3) | `sudo pacman -Syu`                  | Sync with repositories before upgrading packages                 |
+| upgrade[¹](#f1) | `sudo pacman -Syu`                  | Sync with repositories before upgrading packages                 |
 
 | Function       | Description                                               |
 |----------------|-----------------------------------------------------------|
@@ -52,6 +54,8 @@ upgrades were available. Use `pacman -Que` instead.
 
 | Alias   | Command                                         | Description                                                             |
 |---------|-------------------------------------------------|-------------------------------------------------------------------------|
+| auclean | `sudo aura -Sc`                                 | Clean out old and unused caches and packages                            |
+| auclr   | `sudo aura -Scc`                                | Remove all files from the cache                                         |
 | auin    | `sudo aura -S`                                  | Install packages from the repositories                                  |
 | aurin   | `sudo aura -A`                                  | Install packages from the repositories                                  |
 | auins   | `sudo aura -U`                                  | Install a package from a local file                                     |
@@ -70,10 +74,10 @@ upgrades were available. Use `pacman -Que` instead.
 | aurrep  | `aura -Ai`                                      | Display information about a package from AUR                            |
 | aureps  | `aura -As --both`                               | Search for packages in the repositories and AUR                         |
 | auras   | `aura -As --both`                               | Same as above                                                           |
-| auupd   | `sudo aura -Sy && <abs/aur refresh>`[¹](#f1)    | Update and refresh local package, ABS and AUR databases                 |
+| auupd   | `sudo aura -Sy`                                 | Update and refresh local package, ABS and AUR databases                 |
 | auupg   | `sudo sh -c "aura -Syu              && aura -Au"` | Sync with repositories before upgrading all packages (from AUR too)   |
 | ausu    | `sudo sh -c "aura -Syu --no-confirm && aura -Au --no-confirm"` | Same as `auupg`, but without confirmation                |
-| upgrade[³](#f3) | `sudo aura -Syu`                        | Sync with repositories before upgrading packages                        |
+| upgrade[¹](#f1) | `sudo aura -Syu`                        | Sync with repositories before upgrading packages                        |
 
 | Function        | Description                                                         |
 |-----------------|---------------------------------------------------------------------|
@@ -84,6 +88,8 @@ upgrades were available. Use `pacman -Que` instead.
 
 | Alias   | Command                           | Description                                                         |
 |---------|-----------------------------------|---------------------------------------------------------------------|
+| pacclean| `pacaur -Sc`                      | Clean out old and unused caches and packages                        |
+| pacclr  | `pacaur -Scc`                     | Remove all files from the cache                                     |
 | pain    | `pacaur -S`                       | Install packages from the repositories                              |
 | pains   | `pacaur -U`                       | Install a package from a local file                                 |
 | painsd  | `pacaur -S --asdeps`              | Install packages as dependencies of another package                 |
@@ -96,16 +102,18 @@ upgrades were available. Use `pacman -Que` instead.
 | parem   | `pacaur -Rns`                     | Remove packages, including its settings and unneeded dependencies   |
 | parep   | `pacaur -Si`                      | Display information about a package in the repositories             |
 | pareps  | `pacaur -Ss`                      | Search for packages in the repositories                             |
-| paupd   | `pacaur -Sy && <abs/aur refresh>`[¹](#f1) | Update and refresh local package, ABS and AUR databases     |
+| paupd   | `pacaur -Sy`                      | Update and refresh local package, ABS and AUR databases             |
 | paupg   | `pacaur -Syua`                    | Sync with repositories before upgrading all packages (from AUR too) |
 | pasu    | `pacaur -Syua --no-confirm`       | Same as `paupg`, but without confirmation                           |
-| upgrade[³](#f3) | `pacaur -Syu`             | Sync with repositories before upgrading packages                    |
+| upgrade[¹](#f1) | `pacaur -Syu`             | Sync with repositories before upgrading packages                    |
 
 #### Trizen
 
 | Alias   | Command                           | Description                                                         |
 |---------|-----------------------------------|---------------------------------------------------------------------|
 | trconf  | `trizen -C`                       | Fix all configuration files with vimdiff                            |
+| trclean | `trizen -Sc`                      | Clean out old and unused caches and packages                        |
+| trclr   | `trizen -Scc`                     | Remove all files from the cache                                     |
 | trin    | `trizen -S`                       | Install packages from the repositories                              |
 | trins   | `trizen -U`                       | Install a package from a local file                                 |
 | trinsd  | `trizen -S --asdeps`              | Install packages as dependencies of another package                 |
@@ -118,38 +126,18 @@ upgrades were available. Use `pacman -Que` instead.
 | trrem   | `trizen -Rns`                     | Remove packages, including its settings and unneeded dependencies   |
 | trrep   | `trizen -Si`                      | Display information about a package in the repositories             |
 | trreps  | `trizen -Ss`                      | Search for packages in the repositories                             |
-| trupd   | `trizen -Sy && <abs/aur refresh>`[¹](#f1) | Update and refresh local package, ABS and AUR databases     |
+| trupd   | `trizen -Sy`                      | Update and refresh local package, ABS and AUR databases             |
 | trupg   | `trizen -Syua`                    | Sync with repositories before upgrading all packages (from AUR too) |
 | trsu    | `trizen -Syua --no-confirm`       | Same as `trupg`, but without confirmation                           |
-| upgrade[³](#f3) | `trizen -Syu`             | Sync with repositories before upgrading packages                    |
+| upgrade[¹](#f1) | `trizen -Syu`             | Sync with repositories before upgrading packages                    |
 
-#### Yaourt[²](#f2)
-
-| Alias   | Command                           | Description                                                         |
-|---------|-----------------------------------|---------------------------------------------------------------------|
-| yaconf  | `yaourt -C`                       | Fix all configuration files with vimdiff                            |
-| yain    | `yaourt -S`                       | Install packages from the repositories                              |
-| yains   | `yaourt -U`                       | Install a package from a local file                                 |
-| yainsd  | `yaourt -S --asdeps`              | Install packages as dependencies of another package                 |
-| yaloc   | `yaourt -Qi`                      | Display information about a package in the local database           |
-| yalocs  | `yaourt -Qs`                      | Search for packages in the local database                           |
-| yalst   | `yaourt -Qe`                      | List installed packages including from AUR (tagged as "local")      |
-| yamir   | `yaourt -Syy`                     | Force refresh of all package lists after updating mirrorlist        |
-| yaorph  | `yaourt -Qtd`                     | Remove orphans using yaourt                                         |
-| yare    | `yaourt -R`                       | Remove packages, keeping its settings and dependencies              |
-| yarem   | `yaourt -Rns`                     | Remove packages, including its settings and unneeded dependencies   |
-| yarep   | `yaourt -Si`                      | Display information about a package in the repositories             |
-| yareps  | `yaourt -Ss`                      | Search for packages in the repositories                             |
-| yaupd   | `yaourt -Sy && <abs/aur refresh>`[¹](#f1) | Update and refresh local package, ABS and AUR databases     |
-| yaupg   | `yaourt -Syua`                    | Sync with repositories before upgrading all packages (from AUR too) |
-| yasu    | `yaourt -Syua --no-confirm`       | Same as `yaupg`, but without confirmation                           |
-| upgrade[³](#f3) | `yaourt -Syu`             | Sync with repositories before upgrading packages                    |
-
-#### Yay[²](#f2)
+#### Yay
 
 | Alias   | Command                        | Description                                                       |
 |---------|--------------------------------|-------------------------------------------------------------------|
 | yaconf  | `yay -Pg`                      | Print current configuration                                       |
+| yaclean | `yay -Sc`                      | Clean out old and unused caches and packages                      |
+| yaclr   | `yay -Scc`                     | Remove all files from the cache                                   |
 | yain    | `yay -S`                       | Install packages from the repositories                            |
 | yains   | `yay -U`                       | Install a package from a local file                               |
 | yainsd  | `yay -S --asdeps`              | Install packages as dependencies of another package               |
@@ -162,30 +150,22 @@ upgrades were available. Use `pacman -Que` instead.
 | yarem   | `yay -Rns`                     | Remove packages, including its settings and unneeded dependencies |
 | yarep   | `yay -Si`                      | Display information about a package in the repositories           |
 | yareps  | `yay -Ss`                      | Search for packages in the repositories                           |
-| yaupd   | `yay -Sy && <abs/aur refresh>`[¹](#f1) | Update and refresh local package, ABS and AUR databases   |
+| yaupd   | `yay -Sy`                      | Update and refresh local package, ABS and AUR databases           |
 | yaupg   | `yay -Syu`                     | Sync with repositories before upgrading packages                  |
 | yasu    | `yay -Syu --no-confirm`        | Same as `yaupg`, but without confirmation                         |
-| upgrade[³](#f3) | `yay -Syu`             | Sync with repositories before upgrading packages                  |
+| upgrade[¹](#f1) | `yay -Syu`             | Sync with repositories before upgrading packages                  |
 
 ---
 
 <span id="f1">¹</span>
-If the `abs` and/or `aur` commands are present, `sudo abs` and `sudo aur` are also
-called to update the ABS and AUR databases.
-
-<span id="f2">²</span>
-Yay and Yaourt aliases overlap. If both are installed, yay will take precedence.
-
-<span id="f3">³</span>
 The `upgrade` alias is set for all package managers. Its value will depend on
 whether the package manager is installed, checked in the following order:
 
 1. `yay`
-2. `yaourt`
-3. `trizen`
-4. `pacaur`
-5. `aura`
-6. `pacman`
+2. `trizen`
+3. `pacaur`
+4. `aura`
+5. `pacman`
 
 ## Contributors
 
@@ -199,3 +179,5 @@ whether the package manager is installed, checked in the following order:
 - MatthR3D - matthr3d@gmail.com
 - ornicar - thibault.duplessis@gmail.com
 - Ybalrid (Arthur Brainville) - ybalrid@ybalrid.info
+- Jeff M. Hubbard - jeffmhubbard@gmail.com
+- K. Harishankar(harishnkr) - hari2menon1234@gmail.com
